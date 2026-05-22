@@ -1,0 +1,62 @@
+﻿@model IEnumerable<SpinaBets.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Transactions";
+}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+
+        <h2>Transactions</h2>
+
+        <a asp-action="Create"
+           
+           class="btn btn-success">
+            New Transaction
+        </a>
+
+    </div>
+
+    <table class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Reference</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.TransactionDate.ToShortDateString()</td>
+
+                    <td>@item.TransactionType</td>
+
+                    <td>R @item.Amount</td>
+
+                    <td>@item.Reference</td>
+
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@item.TransactionId"
+                           class="btn btn-primary btn-sm">
+                            Edit
+                        </a>
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

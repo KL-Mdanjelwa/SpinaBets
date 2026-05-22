@@ -1,0 +1,52 @@
+﻿@model SpinaBets.Models.Transaction
+
+@{
+    ViewData["Title"] = "Create Transaction";
+}
+
+<div class="container mt-4">
+
+    <h2>Create Transaction</h2>
+
+    <form asp-action="Create" method="post">
+
+        <input type="hidden" asp-for="AccountId" />
+
+        <div class="mb-3">
+
+            <label>Type</label>
+
+            <select asp-for="TransactionType" class="form-control"
+                    asp-items="Html.GetEnumSelectList<TransactionType>()">
+            </select>
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Amount</label>
+            <input asp-for="Amount" class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Date</label>
+            <input asp-for="TransactionDate" type="date" class="form-control" />
+
+        </div>
+
+        <div class="mb-3">
+
+            <label>Reference</label>
+            <input asp-for="Reference" class="form-control" />
+
+        </div>
+
+        <button class="btn btn-success">
+            Submit
+        </button>
+
+    </form>
+
+</div>

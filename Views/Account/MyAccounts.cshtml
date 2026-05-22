@@ -1,0 +1,90 @@
+﻿@model IEnumerable<SpinaBets.Models.Account>
+@{
+    ViewData["Title"] = "My Accounts";
+}
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2>My Betting Accounts</h2>
+
+        <a asp-action="Create"
+           class="btn btn-primary">
+            Create Account
+        </a>
+
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            You currently have no betting accounts.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+
+            @foreach (var account in Model)
+            {
+                <div class="col-md-4 mb-4">
+
+                    <div class="card shadow h-100">
+
+                        <div class="card-header bg-dark text-white">
+                            @account.AccountType Account
+                        </div>
+
+                        <div class="card-body">
+
+                            <p>
+                                <strong>Account Number:</strong>
+                                <br />
+                                @account.AccountNumber
+                            </p>
+
+                            <p>
+                                <strong>Balance:</strong>
+                                <br />
+                                R @account.Balance
+                            </p>
+
+                            <p>
+                                <strong>Status:</strong>
+                                <br />
+
+                                @if (account.IsClosed)
+                                {
+                                    <span class="badge bg-danger">
+                                        Closed
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">
+                                        Open
+                                    </span>
+                                }
+                            </p>
+
+                        </div>
+
+                        <div class="card-footer">
+
+                            <a asp-action="Details"
+                               asp-route-id="@account.AccountId"
+                               class="btn btn-outline-primary w-100">
+                                View Details
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+
+</div>
