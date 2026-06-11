@@ -1,0 +1,58 @@
+﻿@model SpinaBets.Models.Game
+
+@{
+    ViewData["Title"] = "Create Game";
+    var sports = ViewBag.Sports as List<Sport>;
+}
+
+<h2>Create Game</h2>
+
+<form asp-action="Create" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label>Sport</label>
+        <select asp-for="SportId" class="form-control">
+            @foreach (var s in sports)
+            {
+                <option value="@s.SportId">@s.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Home Team</label>
+        <input asp-for="HomeTeam" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Away Team</label>
+        <input asp-for="AwayTeam" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Start Time</label>
+        <input asp-for="StartTime" type="datetime-local" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Home Odds</label>
+        <input asp-for="HomeOdds" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Away Odds</label>
+        <input asp-for="AwayOdds" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Draw Odds</label>
+        <input asp-for="DrawOdds" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Save
+    </button>
+
+</form>

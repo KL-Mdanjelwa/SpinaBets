@@ -19,6 +19,9 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<IBetService, BetService>();
+builder.Services.AddScoped<ISportService, SportService>();
+builder.Services.AddScoped<IGameService, GameService>();
 
 builder.Services.AddControllersWithViews();
 

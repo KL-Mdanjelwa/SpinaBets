@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SpinaBets.Models.Game>
+
+<h2>Games</h2>
+
+ @if (User.IsInRole("Admin"))
+                    {
+
+<a asp-action="Create"
+   class="btn btn-primary mb-3">
+    Create Game
+</a>
+                    }
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>Sport</th>
+            <th>Game</th>
+            <th>Start</th>
+            <th>Status</th>
+            <th>Result</th>
+            @if (User.IsInRole("Admin"))
+                {
+            <th>Actions</th>
+                }
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var game in Model)
+        {
+            <tr>
+                <td>@game.Sport?.Name</td>
+
+                <td>
+                    @game.HomeTeam vs @game.AwayTeam
+                </td>
+
+                <td>
+                    @game.StartTime
+                </td>
+
+                <td>
+                    @game.Status
+                </td>
+
+                <td>
+                    @(game.Result ?? "-")
+                </td>
+
+                
+                
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit"
+                       asp-route-id="@game.GameId"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    @if (game.Status == "Open")
+                    {
+                        <a asp-action="SetResult"
+                           asp-route-id="@game.GameId"
+                           class="btn btn-success btn-sm">
+                            Set Result
+                        </a>
+                    }
+
+                    <form asp-action="Delete"
+                          method="post"
+                          class="d-inline">
+
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden"
+                               name="id"
+                               value="@game.GameId" />
+
+                        <button type="submit"
+                                class="btn btn-danger btn-sm">
+                            Delete
+                        </button>
+
+                    </form>
+                }
+            </tr>
+        }
+
+    </tbody>
+
+</table>

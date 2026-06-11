@@ -9,6 +9,7 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
 
         <h2>Transactions</h2>
+        
 
         <a asp-action="Create"
            
@@ -34,7 +35,10 @@
 
             @foreach (var item in Model)
             {
+                
                 <tr>
+                    
+
 
                     <td>@item.TransactionDate.ToShortDateString()</td>
 
@@ -42,7 +46,11 @@
 
                     <td>R @item.Amount</td>
 
-                    <td>@item.Reference</td>
+                    <td class="@(item.TransactionType == TransactionType.Withdrawal ? "text-danger" : "text-success")">
+                        @(item.TransactionType == TransactionType.Withdrawal
+                            ? $"-R {item.Amount}"
+                            : $"+R {item.Amount}")
+                    </td>
 
                     <td>
                         <a asp-action="Edit"

@@ -6,7 +6,7 @@
 
         public int SportId { get; set; }
         
-        public Sport Sport { get; set; }
+        public Sport? Sport { get; set; }
 
         public string HomeTeam { get; set; } = "";
 
@@ -20,10 +20,10 @@
 
         public decimal? DrawOdds { get; set; }
 
-        public string Status { get; set; } = "";
+        public string Status { get; set; } = "Open";
 
         public string? Result { get; set; }
 
-        public ICollection<Bet> Bets { get; set; }
+        public ICollection<Bet> Bets { get; set; } = new List<Bet>();
     }
 }

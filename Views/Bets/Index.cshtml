@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SpinaBets.Models.Bet>
+ @if (User.IsInRole("Admin"))
+                    {
+<h2>Settle Bets</h2>
+}
+@if (User.IsInRole("Customer"))
+{
+<h2>My Bets</h2>
+                    }
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Game</th>
+            <th>Selection</th>
+            <th>Stake</th>
+            @if (User.IsInRole("Admin"))
+                {
+            <th>Action</th>
+                }
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var bet in Model)
+        {
+            <tr>
+                <td>@bet.Game.HomeTeam vs @bet.Game.AwayTeam</td>
+                <td>@bet.Selection</td>
+                <td>@bet.Stake</td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td class="d-flex gap-2">
+                   
+                        <form asp-action="SettleBet" method="post">
+                            <input type="hidden" name="betId" value="@bet.BetId" />
+                            <input type="hidden" name="result" value="Home" />
+                            <button type="submit"
+                            class="btn btn-success btn-sm"
+                            onclick="return confirm('Set result to HOME?');">
+                                Home Won
+                            </button>
+                        </form>
+
+                        <form asp-action="SettleBet" method="post">
+                            <input type="hidden" name="betId" value="@bet.BetId" />
+                            <input type="hidden" name="result" value="Away" />
+                            <button type="submit"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Set result to AWAY?');">
+                                Away Won
+                            </button>
+                        </form>
+
+                        <form asp-action="SettleBet" method="post">
+                            <input type="hidden" name="betId" value="@bet.BetId" />
+                            <input type="hidden" name="result" value="Draw" />
+                            <button type="submit"
+                            class="btn btn-warning btn-sm"
+                            onclick="return confirm('Set result to DRAW?');">
+                                Draw
+                            </button>
+                        </form>
+                    
+
+                </td>
+                }
+            </tr>
+        }
+    </tbody>
+
+</table>

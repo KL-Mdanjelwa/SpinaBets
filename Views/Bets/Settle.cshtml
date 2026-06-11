@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SpinaBets.Models.Bet>
+
+<h2>Settle Bets</h2>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Game</th>
+            <th>Selection</th>
+            <th>Stake</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var bet in Model)
+        {
+            <tr>
+                <td>@bet.Game.HomeTeam vs @bet.Game.AwayTeam</td>
+                <td>@bet.Selection</td>
+                <td>@bet.Stake</td>
+
+                <td>
+                    <a asp-action="SettleBet"
+                       asp-route-betId="@bet.BetId"
+                       asp-route-result="Home"
+                       class="btn btn-success btn-sm">
+                        Home Won
+                    </a>
+
+                    <a asp-action="SettleBet"
+                       asp-route-betId="@bet.BetId"
+                       asp-route-result="Away"
+                       class="btn btn-danger btn-sm">
+                        Away Won
+                    </a>
+
+                    <a asp-action="SettleBet"
+                       asp-route-betId="@bet.BetId"
+                       asp-route-result="Draw"
+                       class="btn btn-warning btn-sm">
+                        Draw
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model SpinaBets.Models.Game
+
+<h2>Set Result</h2>
+
+<div class="card p-3">
+
+    <h4>
+        @Model.HomeTeam vs @Model.AwayTeam
+    </h4>
+
+    <form asp-action="SetResult"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               name="id"
+               value="@Model.GameId" />
+
+        <div class="mb-3">
+
+            <label>Result</label>
+
+            <select name="result"
+                    class="form-control">
+
+                <option value="Home">
+                    Home Won
+                </option>
+
+                <option value="Away">
+                    Away Won
+                </option>
+
+                <option value="Draw">
+                    Draw
+                </option>
+
+            </select>
+
+        </div>
+
+        <button type="submit"
+                class="btn btn-success">
+            Settle Game
+        </button>
+
+    </form>
+
+</div>

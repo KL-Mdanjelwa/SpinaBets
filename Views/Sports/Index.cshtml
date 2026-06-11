@@ -1,0 +1,65 @@
+﻿@model IEnumerable<SpinaBets.Models.Sport>
+
+@{
+    ViewData["Title"] = "Sports";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Sports</h2>
+
+    <a asp-action="Create" class="btn btn-primary">
+        Add Sport
+    </a>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        No sports have been created yet.
+    </div>
+}
+else
+{
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Sport</th>
+                <th width="220">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var sport in Model)
+            {
+                <tr>
+                    <td>@sport.Name</td>
+
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@sport.SportId"
+                           class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+
+                        <form asp-action="Delete"
+                              method="post"
+                              class="d-inline">
+
+                            @Html.AntiForgeryToken()
+
+                            <input type="hidden"
+                                   name="id"
+                                   value="@sport.SportId" />
+
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Delete this sport?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -4,16 +4,13 @@ namespace SpinaBets.DTO
 {
     public class ProfileDto
     {
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "The First Name field is required"), MaxLength(100)]
         public string FirstName { get; set; } = "";
 
-        [Required]
-        [MaxLength(100)]
+        [Required(ErrorMessage = "The Surname field is required"), MaxLength(100)]
         public string Surname { get; set; } = "";
 
-        [Required]
-        [EmailAddress]
+        [Required, EmailAddress, MaxLength(100)]
         public string Email { get; set; } = "";
 
         [Phone]

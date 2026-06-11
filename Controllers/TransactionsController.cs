@@ -47,6 +47,7 @@ namespace SpinaBets.Controllers
         public async Task<IActionResult> Create(Transaction model)
         {
             Console.WriteLine("CONTROLLER HIT");
+            Console.WriteLine($"POST TransactionType = {model.TransactionType}");
             if (!ModelState.IsValid)
             {
                 foreach (var error in ModelState)

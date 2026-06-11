@@ -58,6 +58,12 @@
             </div>
 
             <hr />
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
 
             @if (!Model.IsClosed)
             {
@@ -134,6 +140,7 @@
                             <th>Date</th>
                             <th>Type</th>
                             <th>Amount</th>
+                            <th>Actions</th>
                         </tr>
 
                     </thead>
@@ -155,6 +162,14 @@
 
                                 <td>
                                     R @transaction.Amount
+                                </td>
+                                <td>
+                                    <a asp-action="Edit"
+                                        asp-controller="Transactions"
+                                       asp-route-id="@transaction.TransactionId"
+                                       class="btn btn-primary btn-sm">
+                                        Edit
+                                    </a>
                                 </td>
 
                             </tr>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace SpinaBets.Models
 {
@@ -12,10 +13,9 @@ namespace SpinaBets.Models
         public int GameId { get; set; }
         public Game Game { get; set; }
 
-        public string SportType { get; set; }
-        // Soccer, Horse Racing, etc.
+        [Required]
+        public string Selection { get; set; } = "";
 
-        
         public decimal Stake { get; set; }
 
         

@@ -70,6 +70,7 @@ namespace SpinaBets.Services
 
         public async Task<bool> CloseAccountAsync(int accountId)
         {
+            Console.WriteLine("CLOSE SERVICE HIT");
             var account = await _context.Accounts.FindAsync(accountId);
 
             if (account == null)
@@ -87,6 +88,7 @@ namespace SpinaBets.Services
 
         public async Task<bool> ReopenAccountAsync(int accountId)
         {
+            Console.WriteLine("CLOSE SERVICE HIT");
             var account = await _context.Accounts.FindAsync(accountId);
 
             if (account == null)

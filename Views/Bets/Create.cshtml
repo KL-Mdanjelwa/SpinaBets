@@ -1,0 +1,51 @@
+﻿@model SpinaBets.ViewModels.CreateBetViewModel
+
+@{
+    ViewData["Title"] = "Place Bet";
+    var games = ViewBag.Games as List<Game> ?? new List<Game>();
+}
+
+<h2>Place Bet</h2>
+
+<form asp-action="Create" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label class="form-label">Game</label>
+        <select asp-for="GameId" class="form-control" required>
+            <option value="">-- Select Game --</option>
+            @foreach (var g in games)
+            {
+                <option value="@g.GameId">
+                    @g.HomeTeam vs @g.AwayTeam
+                </option>
+            }
+        </select>
+        <span asp-validation-for="GameId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Selection</label>
+        <select asp-for="Selection" class="form-control" required>
+            <option value="">-- Select Outcome --</option>
+            <option value="Home">Home</option>
+            <option value="Away">Away</option>
+            <option value="Draw">Draw</option>
+        </select>
+        <span asp-validation-for="Selection" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Stake</label>
+        <input asp-for="Stake" class="form-control" type="number" step="0.01" min="1" required />
+        <span asp-validation-for="Stake" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        Place Bet
+    </button>
+
+</form>

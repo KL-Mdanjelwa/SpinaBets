@@ -5,6 +5,7 @@ namespace SpinaBets.Models
     {
         Pending,
         Won,
-        Lost
+        Lost,
+        Cancelled
     }
 }
