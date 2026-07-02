@@ -1,12 +1,44 @@
-﻿@model SpinaBets.ViewModels.ReportViewModel
+﻿@model IEnumerable<SpinaBets.DTO.BettingReportDto>
 
-<h2>Reports</h2>
+<h2>Betting Report</h2>
 
-<div class="card p-3">
+<table class="table table-striped">
 
-    <p><strong>Total Bets:</strong> @Model.TotalBets</p>
-    <p><strong>Won Bets:</strong> @Model.WonBets</p>
-    <p><strong>Lost Bets:</strong> @Model.LostBets</p>
-    <p><strong>Total Stake:</strong> @Model.TotalStake</p>
+    <thead>
+        <tr>
+            <th>Bet Id</th>
+            <th>Account</th>
+            <th>Game</th>
+            <th>Selection</th>
+            <th>Stake</th>
+            <th>Odds</th>
+            <th>Status</th>
+        </tr>
+    </thead>
 
-</div>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.BetId</td>
+
+                <td>@item.AccountNumber</td>
+
+                <td>
+                    @item.HomeTeam vs @item.AwayTeam
+                </td>
+
+                <td>@item.Selection</td>
+
+                <td>R @item.Stake</td>
+
+                <td>@item.Odds</td>
+
+                <td>@item.Status</td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>

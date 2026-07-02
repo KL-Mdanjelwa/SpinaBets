@@ -1,8 +1,217 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Spina Bets";
 }
+<div style="background-color: #041215;">
+    <div class="container text-white py-5">
+        <div class="row align-items-center g-5">
+            <div class="col-md-6">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                <span class="badge bg-warning text-dark mb-3">
+                    Betting Simulation Platform
+                </span>
+
+                <h1 class="display-3 fw-bold mb-3">
+                    Welcome to
+                    <span class="text-warning">
+                        Spina Bets
+                    </span>
+                </h1>
+
+                <p class="lead text-light mb-4">
+                    Place simulated bets, manage sports accounts,
+                    track games, settle results and monitor betting
+                    activity through a modern educational sportsbook
+                    experience.
+                </p>
+
+                @if (!User.Identity!.IsAuthenticated)
+                {
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="btn btn-warning btn-lg me-2">
+                        Get Started
+                    </a>
+
+                    <a asp-controller="Account"
+                       asp-action="Login"
+                       class="btn btn-outline-light btn-lg">
+                        Login
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Dashboard"
+                       asp-action="Customer"
+                       class="btn btn-warning btn-lg">
+                        Open Dashboard
+                    </a>
+                }
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <div class="hero-graphic">
+
+                    <div class="score-card">
+                        <h3>Pirates vs Chiefs</h3>
+
+                        <div class="odds-row">
+                            <div>Home<br /><strong>1.80</strong></div>
+                            <div>Draw<br /><strong>3.50</strong></div>
+                            <div>Away<br /><strong>2.20</strong></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            Popular Sports
+        </h2>
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    ⚽
+                    <h4>Soccer</h4>
+                    <p>Bet on major football fixtures.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    🏀
+                    <h4>Basketball</h4>
+                    <p>Track games and odds.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    🏇
+                    <h4>Horse Racing</h4>
+                    <p>Simulated racing events.</p>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="feature-card">
+                    🎮
+                    <h4>Esports</h4>
+                    <p>Competitive gaming markets.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="stats-section">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-3">
+                <h2>100+</h2>
+                <p>Games</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>5</h2>
+                <p>Sports</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>24/7</h2>
+                <p>Simulation Access</p>
+            </div>
+
+            <div class="col-md-3">
+                <h2>100%</h2>
+                <p>Educational</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="py-5">
+
+    <div class="container">
+
+        <h2 class="text-center mb-5">
+            How It Works
+        </h2>
+
+        <div class="row">
+
+            <div class="col-md-3 text-center">
+                <div class="step-circle">1</div>
+                <h5>Create Account</h5>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="step-circle">2</div>
+                <h5>Deposit Funds</h5>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="step-circle">3</div>
+                <h5>Place Bets</h5>
+            </div>
+
+            <div class="col-md-3 text-center">
+                <div class="step-circle">4</div>
+                <h5>Track Results</h5>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cta-section">
+
+    <div class="container text-center">
+
+        <h2 class="mb-3">
+            Ready to Start?
+        </h2>
+
+        <p class="mb-4">
+            Experience a complete betting simulation platform
+            designed for learning and demonstration.
+        </p>
+
+        @if (!User.Identity!.IsAuthenticated)
+        {
+            <a asp-controller="Account"
+               asp-action="Register"
+               class="btn btn-warning btn-lg">
+                Join Spina Bets
+            </a>
+        }
+
+    </div>
+
+</section>

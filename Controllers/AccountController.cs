@@ -243,12 +243,12 @@ namespace SpinaBets.Controllers
                     "Admin"))
                 {
                     return RedirectToAction(
-                        "Admin",
+                        "Index",
                         "Home");
                 }
 
                 return RedirectToAction(
-                    "Customer",
+                    "Index",
                     "Home");
             }
 

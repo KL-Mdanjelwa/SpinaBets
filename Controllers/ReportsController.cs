@@ -1,39 +1,36 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SpinaBets.DbContext;
-using SpinaBets.Models;
-using Microsoft.EntityFrameworkCore;
-using SpinaBets.ViewModels;
+using SpinaBets.Services.Interfaces;
+
 
 namespace SpinaBets.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class ReportsController : Controller
+    namespace SpinaBets.Controllers
     {
-        private readonly ApplicationDbContext _context;
-
-        public ReportsController(ApplicationDbContext context)
+        [Authorize(Roles = "Admin")]
+        public class ReportsController : Controller
         {
-            _context = context;
-        }
+            private readonly IReportService _reportService;
 
-        public async Task<IActionResult> Index()
-        {
-            var totalBets = await _context.Bets.CountAsync();
-            var totalWon = await _context.Bets.CountAsync(b => b.Status == BetStatus.Won);
-            var totalLost = await _context.Bets.CountAsync(b => b.Status == BetStatus.Lost);
-
-            var totalStake = await _context.Bets.SumAsync(b => (decimal?)b.Stake) ?? 0;
-
-            var model = new ReportViewModel
+            public ReportsController(IReportService reportService)
             {
-                TotalBets = totalBets,
-                WonBets = totalWon,
-                LostBets = totalLost,
-                TotalStake = totalStake
-            };
+                _reportService = reportService;
+            }
 
-            return View(model);
+            public async Task<IActionResult> Index()
+            {
+                var report = await _reportService.GetBettingReportAsync();
+
+                return View(report);
+            }
+
+            public async Task<IActionResult> Dashboard()
+            {
+                var dashboard =
+                    await _reportService.GetAdminDashboardAsync();
+
+                return View(dashboard);
+            }
         }
     }
-}
+ }

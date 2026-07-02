@@ -1,0 +1,60 @@
+﻿@model SpinaBets.ViewModels.CustomerDashboardViewModel
+
+<h2 class="mb-4">Customer Dashboard</h2>
+
+<div class="row g-4 mb-4">
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Total Balance</h6>
+            <h3>R @Model.TotalBalance</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Open Bets</h6>
+            <h3>@Model.OpenBets</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Won Bets</h6>
+            <h3>@Model.WonBets</h3>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Lost Bets</h6>
+            <h3>@Model.LostBets</h3>
+        </div>
+    </div>
+
+</div>
+
+<div class="card shadow-sm p-4">
+    <h4>Recent Bets</h4>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Game</th>
+                <th>Stake</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var bet in Model.RecentBets)
+            {
+                <tr>
+                    <td>@bet.Game.HomeTeam vs @bet.Game.AwayTeam</td>
+                    <td>R @bet.Stake</td>
+                    <td>@bet.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

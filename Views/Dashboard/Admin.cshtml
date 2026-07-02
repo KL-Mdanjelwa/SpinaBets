@@ -1,0 +1,63 @@
+﻿@model SpinaBets.ViewModels.AdminDashboardViewModel
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row g-4">
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Users</h6>
+            <h2>@Model.TotalUsers</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Accounts</h6>
+            <h2>@Model.TotalAccounts</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Games</h6>
+            <h2>@Model.TotalGames</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Total Bets</h6>
+            <h2>@Model.TotalBets</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Open Games</h6>
+            <h2>@Model.OpenGames</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Completed Games</h6>
+            <h2>@Model.CompletedGames</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Pending Bets</h6>
+            <h2>@Model.PendingBets</h2>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card dashboard-card">
+            <h6>Total Balance</h6>
+            <h2>R @Model.TotalBalances</h2>
+        </div>
+    </div>
+
+</div>

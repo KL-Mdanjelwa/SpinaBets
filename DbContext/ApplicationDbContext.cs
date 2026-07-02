@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SpinaBets.DTO;
 using SpinaBets.Models;
 namespace SpinaBets.DbContext
 {
@@ -14,8 +15,10 @@ namespace SpinaBets.DbContext
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Bet> Bets { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<AdminDashboardReport> AdminDashboardReport { get; set; }
         public DbSet<Sport> Sports { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<BettingReportDto> BettingReports { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -67,6 +70,39 @@ namespace SpinaBets.DbContext
             builder.Entity<Transaction>()
             .Property(t => t.TransactionType)
             .HasConversion<string>();
+
+            builder.Entity<AdminDashboardReport>()
+            .HasNoKey()
+            .ToView("vw_AdminDashboard");
+
+            base.OnModelCreating(builder);
+
+            builder.Entity<Account>()
+                .HasIndex(a => a.UserId);
+
+            builder.Entity<Bet>()
+                .HasIndex(b => b.AccountId);
+
+            builder.Entity<Bet>()
+                .HasIndex(b => b.GameId);
+
+            builder.Entity<Game>()
+                .HasIndex(g => g.SportId);
+
+            builder.Entity<Transaction>()
+                .HasIndex(t => t.AccountId);
+
+            builder.Entity<Transaction>()
+                .HasIndex(t => t.TransactionDate);
+
+            builder.Entity<Bet>()
+                .HasIndex(b => b.Status);
+
+            builder.Entity<BettingReportDto>()
+                .HasNoKey();
+
+            builder.Entity<BettingReportDto>()
+                .ToView(null);
 
         }
     }
