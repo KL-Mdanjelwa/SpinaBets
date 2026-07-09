@@ -121,7 +121,6 @@ Each user can create betting accounts for different sports.
 Supported account types include:
 
 - Soccer
-- Horse Racing
 - Basketball
 - Esports
 - General
@@ -160,7 +159,6 @@ Business rules:
 # 🎮 Supported Sports
 
 - Soccer
-- Horse Racing
 - Basketball
 - Esports
 - General
@@ -314,7 +312,7 @@ DTO/
 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/SpinaBets.git
+git clone https://github.com/KL-Mdanjelwa/SpinaBets.git
 ```
 
 2. Open the solution in Visual Studio.
