@@ -39,7 +39,7 @@
 
                     if (User.IsInRole("Admin"))
                     {
-                        var fullName = $"{appUser?.FirstName} {appUser?.Surname}";
+                        var fullName = $"{appUser?.FirstName}";
 
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
@@ -50,7 +50,7 @@
                                    data-bs-toggle="dropdown"
                                    aria-expanded="false">
 
-                                    @($"{fullName} (Admin)")
+                                    @($"{fullName}")
                                 </a>
 
                                 <ul class="dropdown-menu">

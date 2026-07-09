@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SpinaBets.DTO;
 using SpinaBets.Models;
-using SpinaBets.Services;
 using SpinaBets.Services.Interfaces;
 
 
@@ -22,7 +21,7 @@ namespace SpinaBets.Controllers
             IAccountService accountService,
             SignInManager<ApplicationUser> signInManager)
 
-        {
+        { 
             this._userManager = userManager;
             this._signInManager = signInManager;
             this._accountService = accountService;
@@ -68,7 +67,7 @@ namespace SpinaBets.Controllers
         [HttpPost]
         public async Task<IActionResult> Close(int id)
         {
-            Console.WriteLine("CLOSE HIT");
+            
             try
             {
                 await _accountService.CloseAccountAsync(id);
@@ -85,7 +84,7 @@ namespace SpinaBets.Controllers
         [HttpPost]
         public async Task<IActionResult> Reopen(int id)
         {
-            Console.WriteLine("REOPEN HIT");
+            
             await _accountService.ReopenAccountAsync(id);
 
             return RedirectToAction(nameof(Details),
@@ -167,7 +166,7 @@ namespace SpinaBets.Controllers
                 UserName = registerDto.Email,
                 Email = registerDto.Email,
                 PhoneNumber = registerDto.PhoneNumber,
-                CreatedDate = DateTime.UtcNow
+                CreatedDate = DateTime.Today
             };
 
             var result = await _userManager

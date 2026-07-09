@@ -1,4 +1,27 @@
-﻿@model List<SpinaBets.ViewModels.UserViewModel>
+﻿@model SpinaBets.ViewModels.UsersIndexViewModel
+
+<form method="get" class="row mb-4">
+
+    <div class="col-md-6">
+        <input asp-for="Search"
+               class="form-control"
+               placeholder="Search by Surname, ID Number or Account Number..." />
+    </div>
+
+    <div class="col-md-2">
+        <button class="btn btn-primary w-100">
+            Search
+        </button>
+    </div>
+
+    <div class="col-md-2">
+        <a asp-action="Index"
+           class="btn btn-secondary w-100">
+            Clear
+        </a>
+    </div>
+
+</form>
 
 <h2>Users</h2>
 
@@ -9,6 +32,7 @@
             <th>Name</th>
             <th>Email</th>
             <th>ID Number</th>
+            <th>Account Number</th>
             <th>Role</th>
             <th>Created</th>
             <th>Actions</th>
@@ -16,12 +40,13 @@
     </thead>
 
     <tbody>
-        @foreach (var user in Model)
+        @foreach (var user in Model.Users)
         {
             <tr>
                 <td>@user.FirstName @user.Surname</td>
                 <td>@user.Email</td>
                 <td>@user.IDNumber</td>
+                <td>@user.AccountNumber</td>
                 <td>
                     @string.Join(", ", user.Roles)
                 </td>
@@ -57,3 +82,52 @@
     </tbody>
 
 </table>
+<nav>
+
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(Model.CurrentPage - 1)"
+               asp-route-search="@Model.Search">
+
+                Previous
+
+            </a>
+
+        </li>
+
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+
+                <a class="page-link"
+                   asp-action="Index"
+                   asp-route-page="@i"
+                   asp-route-search="@Model.Search">
+
+                    @i
+
+                </a>
+
+            </li>
+        }
+
+        <li class="page-item @(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+
+            <a class="page-link"
+               asp-action="Index"
+               asp-route-page="@(Model.CurrentPage + 1)"
+               asp-route-search="@Model.Search">
+
+                Next
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>

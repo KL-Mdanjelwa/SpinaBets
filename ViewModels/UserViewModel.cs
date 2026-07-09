@@ -14,6 +14,8 @@
 
         public string IDNumber { get; set; } = "";
 
+        public string AccountNumber { get; set; } = "";
+
         public List<string> Roles { get; set; } = new();
 
         public DateTime CreatedDate { get; set; }

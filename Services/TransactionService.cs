@@ -125,19 +125,18 @@ namespace SpinaBets.Services
 
                 account.Balance = balance;
 
-               
+
                 existing.Amount = transaction.Amount;
                 existing.TransactionType = transaction.TransactionType;
                 existing.TransactionDate = transaction.TransactionDate;
                 existing.Reference = transaction.Reference;
                 existing.CaptureDate = DateTime.Now;
 
-                Console.WriteLine($"EDIT TX ID: {transaction.TransactionId}");
-                Console.WriteLine($"OLD TYPE: {originalType}, OLD AMOUNT: {originalAmount}");
-                Console.WriteLine($"NEW TYPE: {transaction.TransactionType}, NEW AMOUNT: {transaction.Amount}");
-                Console.WriteLine($"BALANCE BEFORE SAVE: {balance}");
+                
 
                 await _context.SaveChangesAsync();
+                
+
 
                 Console.WriteLine("Save Success");
             }
