@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="../SpinaBets.E2ETests/SpinaBets.E2ETests.csproj" Id="ba991889-7c0c-4fe7-bb8c-77fb64e4438f" />
+  <Project Path="../SpinaBets.IntegrationTests/SpinaBets.IntegrationTests.csproj" Id="32193048-58dc-440d-b148-3c0af73734fd" />
+  <Project Path="../SpinaBets.UnitTests/SpinaBets.UnitTests.csproj" Id="194d146e-e892-482c-a699-8f6c298e1d84" />
   <Project Path="SpinaBets.csproj" />
 </Solution>
