@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SpinaBets.Models;
+using SpinaBets.ViewModels;
 using System.Diagnostics;
 
 namespace SpinaBets.Controllers
@@ -35,6 +36,33 @@ namespace SpinaBets.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Contact()
+        {
+            return View(new ContactViewModel());
+        }
+
+        [HttpPost]
+        public IActionResult Contact(ContactViewModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            string phoneNumber = "27683566154"; 
+
+            string message =
+                $"Name: {model.Name}%0A" +
+                $"Email: {model.Email}%0A" +
+                $"Subject: {model.Subject}%0A%0A" +
+                $"{model.Message}";
+
+            return Redirect($"https://wa.me/{phoneNumber}?text={message}");
+        }
+
+        public IActionResult About()
+        {
+            return View();
         }
     }
 }

@@ -1,0 +1,148 @@
+﻿@model SpinaBets.ViewModels.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<div class="container py-5">
+
+    <div class="row">
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body p-5">
+
+                    <h2 class="mb-4">
+                        Contact Spina Bets
+                    </h2>
+
+                    <form asp-action="Contact" method="post">
+
+                        <div class="mb-3">
+
+                            <label>Name</label>
+
+                            <input asp-for="Name"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Email</label>
+
+                            <input asp-for="Email"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Subject</label>
+
+                            <input asp-for="Subject"
+                                   class="form-control" />
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label>Message</label>
+
+                            <textarea asp-for="Message"
+                                      rows="6"
+                                      class="form-control"></textarea>
+
+                        </div>
+
+                        <button class="btn btn-success btn-lg">
+                            Send via WhatsApp
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-body">
+
+                    <h3>Contact Details</h3>
+
+                    <hr />
+
+                    <p>
+
+                        <strong>Email</strong><br />
+
+                        kamvalethum@betsoftware.com
+
+                    </p>
+
+                    <p>
+
+                        <strong>Phone</strong><br />
+
+                        +27 68 356 6154
+
+                    </p>
+
+                    <p>
+
+                        <strong>Office Hours</strong><br />
+
+                        Monday - Friday<br />
+
+                        08:00 - 17:00
+
+                    </p>
+
+                    <hr />
+
+                    <h4>Follow Us</h4>
+
+                    <div class="d-grid gap-2">
+
+                        <a href="https://facebook.com"
+                           target="_blank"
+                           class="btn btn-outline-primary">
+                            Facebook
+                        </a>
+
+                        <a href="https://instagram.com"
+                           target="_blank"
+                           class="btn btn-outline-danger">
+                            Instagram
+                        </a>
+
+                        <a href="https://twitter.com"
+                           target="_blank"
+                           class="btn btn-outline-dark">
+                            X (Twitter)
+                        </a>
+
+                        <a href="https://linkedin.com"
+                           target="_blank"
+                           class="btn btn-outline-info">
+                            LinkedIn
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
