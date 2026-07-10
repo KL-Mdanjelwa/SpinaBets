@@ -25,7 +25,6 @@ namespace SpinaBets.DbContext
         {
             base.OnModelCreating(builder);
 
-           
             builder.Entity<Account>()
                 .Property(a => a.Balance)
                 .HasPrecision(18, 2);
@@ -75,7 +74,7 @@ namespace SpinaBets.DbContext
             .HasNoKey()
             .ToView("vw_AdminDashboard");
 
-            base.OnModelCreating(builder);
+            //base.OnModelCreating(builder);
 
             builder.Entity<Account>()
                 .HasIndex(a => a.UserId);
