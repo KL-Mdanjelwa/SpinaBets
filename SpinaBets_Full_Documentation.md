@@ -284,24 +284,7 @@ Sport "1" --> "*" Game
 
 Game "1" --> "*" Bet
 
-class AccountService
 
-class TransactionService
-
-class BetService
-
-class SportService
-
-class GameService
-
-class ReportService
-
-AccountService --> Account
-TransactionService --> Transaction
-BetService --> Bet
-SportService --> Sport
-GameService --> Game
-ReportService --> Bet
 ```
 
 ### Bet Sequence
